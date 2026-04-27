@@ -234,3 +234,79 @@ pinout
 
 >>>>>>> c3c825e6ce6f0283e5fc647ca961d7dfe457009c
 ![alt text](image-19.png)
+
+```
+1  sudo apt update
+    2  sudo aup upgrade
+    3  sudo apt upgrade
+    4  sudo apt update
+    5  sudo apt upgrade
+    6  sudo raspi-config
+    7  sudo apt install fonts-nanum fonts-nanum-extra
+    8  sudo apt install fonts-unfonts-core
+    9  sudo apt install ibus
+   10  sudo apt install ibus-hangul
+   11  ibus-setup
+   12  ibus restart
+   13  history
+   14  sudo apt install libgpiod-dev gpiod -y
+   15  sudo apy install libgpiod-dev gpiod -y
+   16  sudo apt install libgpiod-dev gpiod -y
+   17  ls
+   18  pwd
+   19  mdir -p work/c
+   20  mkdir -p work/c
+   21  ls
+   22  mkdir -p wrk
+   23  ls
+   24  cd work
+   25  ls
+   26  cd c
+   27  ls
+   28  sudo nano/etc/nanorc
+   29  sudo nano /etc/nanorc
+   30  nano test.c
+   31  sudo apt install fonts-nanum fonts-nanum-extra
+   32  sudo apt install fonts-unfonts-core
+   33  sudo apt intall ibus
+   34  sudo apt install ibus
+   35  sudo apt install ibus-hangul
+   36  ibus-setup
+   37  ibus-daemon -drx
+   38  ibus-setup
+   39  rpi
+   40  ls
+   41  cd work
+   42  ls
+   43  cd c
+   44  ls
+   45  gcc test.c -o test
+   46  ls
+   47  ./test
+   48  sudo shutdown now
+   49  history
+   50  ls
+   51  cd work
+   52  ls
+   53  nano /etc/nanorc
+   54  sudo nano /etc/nanorc
+   55  git config --global user.email "gusqls7748@://github.com"
+   56  git config --global user.name "gusqls7748"
+   57  git config pull.rebase false
+   58  cd iot_Raspberry_Pi_2026
+   59  git config pull.rebase false
+   60  git pull origin main
+   61  ㅣㄴ
+   62  ls
+   63  cd
+   64  ls
+   65  cd work
+   66  ls
+   67  cd
+   68  ls
+   69  cd iot_Raspberry_Pi_2026/
+   70  ls
+   71  cd work
+   72  ls
+   73  history
+```
