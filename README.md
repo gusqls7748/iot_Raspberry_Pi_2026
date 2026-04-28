@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # iot_Raspberry_Pi_2026
 2026년 Iot개발 라즈베리파이 리포지토리
 
@@ -115,7 +114,6 @@ sudo apt apgrade를 한다.
 
 pinout
 
-=======
 # iot_Raspberry_Pi_2026
 2026년 Iot개발 라즈베리파이 리포지토리
 
@@ -232,7 +230,6 @@ sudo apt apgrade를 한다.
 
 pinout
 
->>>>>>> c3c825e6ce6f0283e5fc647ca961d7dfe457009c
 ![alt text](image-19.png)
 
 ```
@@ -310,3 +307,48 @@ pinout
    72  ls
    73  history
 ```
+
+### 2일차
+
+SWICH
+
+- ![alt text](image-20.png)
+
+- ![alt text](스위치.jpg)
+
+1. 회로도 설명 (풀업 저항 원리)이미지 속 VCC(5V) -> 저항 -> GPIO2로 이어지는 붉은 화살표($i_1$)를 보세요.
+스위치가 OFF일 때 (버튼 안 누름): 전기가 갈 곳이 없어서 저항을 지나 그대로 GPIO 2번 핀으로 들어갑니다. 
+그래서 컴퓨터는 "아, 전기가 들어오네? HIGH(1) 상태구나"라고 인식합니다.
+스위치가 ON일 때 (버튼 누름): 전기가 저항을 거친 후, 저항이 없는 아주 편한 길인 GND(0V) 쪽으로 쏟아져 내려갑니다. 
+그러면 GPIO 2번 핀에는 전기가 거의 안 가게 되어 컴퓨터는 "LOW(0) 상태구나"라고 인식합니다.[!TIP]왜 저항을 쓰나요? 저항 없이 5V와 GND를 직접 연결하면 과전류가 흘러 라즈베리 파이가 망가질 수 있어요. 그래서 저항이 전기를 적당히 조절해주는 '댐' 역할을 하는 것입니다.
+
+3. 하드웨어 연결 체크 (사진 6b1777.jpg 기준)
+사진을 보니 주황색 선이 5V에, 보라색 선이 GPIO 2에, 초록색 선이 GND 쪽으로 가고 있는 것 같네요!
+
+ 1. 5V (주황색 선): 브레드보드의 저항 한쪽 끝으로 전기를 보내줍니다.
+ 2. 저항: 전기를 적당히 줄여서 버튼 다리와 GPIO 2번 선이 만나는 지점으로 보냅니다.
+ 3. GPIO 2 (보라색 선): 버튼과 저항 사이에서 전기가 오는지 감시합니다.
+ 4. GND (초록색 선): 버튼의 반대쪽 다리에 연결되어, 버튼을 누르는 순간 전기를 땅으로 흘려보냅니다
+
+ ![alt text](image-21.png)
+
+ ```
+ sudo raspi-config
+    pinout
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install gpiozero lgpio
+    deactivate
+    ls
+    ls /dev/i2c*
+    sudo apt install i2c-tools
+    i2cdectect -y 1
+    i2cdetect -y 1
+    python -m venv --system-site-packages .venv
+    source ./.venv/bin/activate
+    ls
+    i2cdetect -y 1
+    sudo apt install i2c-tools
+    i2cdetect -y 1
+    history
+ ```
