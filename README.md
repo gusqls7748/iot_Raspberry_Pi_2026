@@ -416,6 +416,18 @@ CDS: 185
 - bus.write_byte(address, 0x42) 
 ![alt text](cds_led.png)
 
-- 능동 부저(Active Buzzer)
+- 능동 부저(Active Buzzer) (buzzer01.py,buzzer02.py, organ.py)
 (+) 선 GPIO21에 연결 (-)GND(그라운드에 연결)
 ![alt text](image-24.png)
+
+- 초음파센서(ultrasonic01.py,ultrasonic02.py,ultrasonic03.py)
+![alt text](image-28.png)
+
+- 초음파 센서와 능동 부저를 이용한 자동차 후방 센서 (car_sensor.py)
+ ![alt text](image-25.png)
+
+- I2C 1602 LCD 모듈 출력 (lcd.py, multiplication_table.py)
+ ![alt text](image-26.png)
+
+- 초음파 센서 값을 LCD에 표시 (lcd_ultrasonic.py)
+ ![alt text](image-27.png)
