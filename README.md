@@ -352,3 +352,70 @@ SWICH
     i2cdetect -y 1
     history
  ```
+
+ ### 3일차
+
+ - VS Code 창에서 192.168.0.2
+ 1. 방법 1: 터미널에서 바로 접속 (가장 빠름)
+- ssh rpi@192.168.0.2
+
+- 방법 2: VS Code의 SSH 기능으로 연결 (추천)
+
+1. 명령 팔레트 열기: 키보드에서 Ctrl + Shift + P를 누릅니다.
+
+2. 명령어 입력: Remote-SSH: Connect to Host...를 타이핑하고 선택합니다.
+
+3. 호스트 추가: + Add New SSH Host...를 클릭합니다.
+
+4. 접속 정보 입력: ssh rpi@192.168.0.2를 입력하고 엔터를 누릅니다.
+
+5. 구성 파일 선택: 가장 위에 나오는 설정 파일(.../.ssh/config)을 선택합니다.
+
+6. 연결: 오른쪽 하단에 뜨는 [Connect] 버튼을 누르거나, 다시 Connect to Host...에서 192.168.0.2를 선택합니다.
+
+7. 비밀번호 입력: 상단 중앙에 비밀번호 입력창이 뜨면 입력하세요.
+
+```
+(.venv) rpi@rpi:~/iot_Raspberry_Pi_2026/work/py $ i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+```
+
+![alt text](image-22.png)
+
+![alt text](image-23.png)
+
+```
+손으로 가렸을때 결과
+(.venv) rpi@rpi:~/iot_Raspberry_Pi_2026/work/py $ python PCF8591.py 
+CDS: 126
+CDS: 126
+CDS: 126
+CDS: 126
+CDS: 133
+CDS: 167
+CDS: 184
+CDS: 183
+CDS: 184
+CDS: 170
+CDS: 187
+CDS: 187
+CDS: 186
+CDS: 185
+^C종 료
+```
+- 센서
+- bus.write_byte(ADDR, 0x40) # AIN1
+- bus.write_byte(address, 0x42) 
+![alt text](cds_led.png)
+
+- 능동 부저(Active Buzzer)
+(+) 선 GPIO21에 연결 (-)GND(그라운드에 연결)
+![alt text](image-24.png)
