@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # iot_Raspberry_Pi_2026
 2026년 Iot개발 라즈베리파이 리포지토리
 
@@ -115,7 +114,6 @@ sudo apt apgrade를 한다.
 
 pinout
 
-=======
 # iot_Raspberry_Pi_2026
 2026년 Iot개발 라즈베리파이 리포지토리
 
@@ -232,7 +230,6 @@ sudo apt apgrade를 한다.
 
 pinout
 
->>>>>>> c3c825e6ce6f0283e5fc647ca961d7dfe457009c
 ![alt text](image-19.png)
 
 ```
@@ -310,3 +307,115 @@ pinout
    72  ls
    73  history
 ```
+
+### 2일차
+
+SWICH
+
+- ![alt text](image-20.png)
+
+- ![alt text](스위치.jpg)
+
+1. 회로도 설명 (풀업 저항 원리)이미지 속 VCC(5V) -> 저항 -> GPIO2로 이어지는 붉은 화살표($i_1$)를 보세요.
+스위치가 OFF일 때 (버튼 안 누름): 전기가 갈 곳이 없어서 저항을 지나 그대로 GPIO 2번 핀으로 들어갑니다. 
+그래서 컴퓨터는 "아, 전기가 들어오네? HIGH(1) 상태구나"라고 인식합니다.
+스위치가 ON일 때 (버튼 누름): 전기가 저항을 거친 후, 저항이 없는 아주 편한 길인 GND(0V) 쪽으로 쏟아져 내려갑니다. 
+그러면 GPIO 2번 핀에는 전기가 거의 안 가게 되어 컴퓨터는 "LOW(0) 상태구나"라고 인식합니다.[!TIP]왜 저항을 쓰나요? 저항 없이 5V와 GND를 직접 연결하면 과전류가 흘러 라즈베리 파이가 망가질 수 있어요. 그래서 저항이 전기를 적당히 조절해주는 '댐' 역할을 하는 것입니다.
+
+3. 하드웨어 연결 체크 (사진 6b1777.jpg 기준)
+사진을 보니 주황색 선이 5V에, 보라색 선이 GPIO 2에, 초록색 선이 GND 쪽으로 가고 있는 것 같네요!
+
+ 1. 5V (주황색 선): 브레드보드의 저항 한쪽 끝으로 전기를 보내줍니다.
+ 2. 저항: 전기를 적당히 줄여서 버튼 다리와 GPIO 2번 선이 만나는 지점으로 보냅니다.
+ 3. GPIO 2 (보라색 선): 버튼과 저항 사이에서 전기가 오는지 감시합니다.
+ 4. GND (초록색 선): 버튼의 반대쪽 다리에 연결되어, 버튼을 누르는 순간 전기를 땅으로 흘려보냅니다
+
+ ![alt text](image-21.png)
+
+ ```
+ sudo raspi-config
+    pinout
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install gpiozero lgpio
+    deactivate
+    ls
+    ls /dev/i2c*
+    sudo apt install i2c-tools
+    i2cdectect -y 1
+    i2cdetect -y 1
+    python -m venv --system-site-packages .venv
+    source ./.venv/bin/activate
+    ls
+    i2cdetect -y 1
+    sudo apt install i2c-tools
+    i2cdetect -y 1
+    history
+ ```
+
+ ### 3일차
+
+ - VS Code 창에서 192.168.0.2
+ 1. 방법 1: 터미널에서 바로 접속 (가장 빠름)
+- ssh rpi@192.168.0.2
+
+- 방법 2: VS Code의 SSH 기능으로 연결 (추천)
+
+1. 명령 팔레트 열기: 키보드에서 Ctrl + Shift + P를 누릅니다.
+
+2. 명령어 입력: Remote-SSH: Connect to Host...를 타이핑하고 선택합니다.
+
+3. 호스트 추가: + Add New SSH Host...를 클릭합니다.
+
+4. 접속 정보 입력: ssh rpi@192.168.0.2를 입력하고 엔터를 누릅니다.
+
+5. 구성 파일 선택: 가장 위에 나오는 설정 파일(.../.ssh/config)을 선택합니다.
+
+6. 연결: 오른쪽 하단에 뜨는 [Connect] 버튼을 누르거나, 다시 Connect to Host...에서 192.168.0.2를 선택합니다.
+
+7. 비밀번호 입력: 상단 중앙에 비밀번호 입력창이 뜨면 입력하세요.
+
+```
+(.venv) rpi@rpi:~/iot_Raspberry_Pi_2026/work/py $ i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+```
+
+![alt text](image-22.png)
+
+![alt text](image-23.png)
+
+```
+손으로 가렸을때 결과
+(.venv) rpi@rpi:~/iot_Raspberry_Pi_2026/work/py $ python PCF8591.py 
+CDS: 126
+CDS: 126
+CDS: 126
+CDS: 126
+CDS: 133
+CDS: 167
+CDS: 184
+CDS: 183
+CDS: 184
+CDS: 170
+CDS: 187
+CDS: 187
+CDS: 186
+CDS: 185
+^C종 료
+```
+- 센서
+- bus.write_byte(ADDR, 0x40) # AIN1
+- bus.write_byte(address, 0x42) 
+![alt text](cds_led.png)
+
+- 능동 부저(Active Buzzer)
+(+) 선 GPIO21에 연결 (-)GND(그라운드에 연결)
+![alt text](image-24.png)
