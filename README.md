@@ -1,6 +1,31 @@
 # iot_Raspberry_Pi_2026
 2026년 Iot개발 라즈베리파이 리포지토리
 
+# 🚗 IoT Raspberry Pi 2026 Project
+라즈베리파이 5를 활용한 IoT 센서 제어 및 주차 보조 시스템 구현
+
+## 🛠 1. 개발 환경 (Setup)
+- OS: Raspberry Pi OS (64-bit)
+- Python 3.1x + venv
+- Libraries: `gpiozero`, `lgpio`, `RPLCD`
+
+## 📟 2. 주요 기능 (Features)
+### [주차 보조 시스템 (car_sensor.py)]
+- 초음파 센서를 이용한 실시간 거리 측정
+- 거리에 따른 능동 부저 경고음 주기 조절
+- LCD를 통한 거리 정보 시각화
+
+### [수학 교육 도구 (multiplication_table.py)]
+- I2C 1602 LCD를 활용한 구구단 출력 루틴
+
+## 🔌 3. 회로도 및 원리 (Circuit)
+- **풀업 저항(Pull-up Resistor)**: 스위치 입력 안정화를 위한 회로 설계
+
+
+## 🚀 4. 시작하기 (How to Run)
+1. 가상환경 활성화: `source .venv/bin/activate`
+2. 실행: `python lcd_ultrasonic.py`
+
 - 라즈베리파이 다운
 
 - https://www.raspberrypi.com/software/
