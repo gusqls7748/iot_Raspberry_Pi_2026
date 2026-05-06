@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IoT Panel</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        button { padding: 15px 30px; font-size: 18px; cursor: pointer; margin: 10px; }
+        .dist-box { font-size: 40px; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>IoT 컨트롤 패널</h1>
+    <div class="dist-box">
+        현재 거리: <span id="dist">{{ distance }}</span> cm
+    </div>
+
+    <hr>
+
+    <h3>LED 17번 제어</h3>
+    <button onclick="send('led', 'on')" style="background-color: #ffcccc;">LED 켜기</button>
+    <button onclick="send('led', 'off')">LED 끄기</button>
+
+    <h3>부저 제어</h3>
+    <button onclick="send('buzzer', 'on')" style="background-color: #ffffcc;">부저 켜기</button>
+    <button onclick="send('buzzer', 'off')">부저 끄기</button>
+
+    <script>
+        function send(device, action) {
+            fetch(`/control/${device}/${action}`);
+        }
+        // 2초마다 자동으로 페이지를 새로고침해서 거리값을 업데이트합니다.
+        setInterval(() => { location.reload(); }, 2000);
+    </script>
+</body>
+</html>
