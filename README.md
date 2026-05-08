@@ -550,6 +550,59 @@ SCL: GPIO 3번 (데이터 박자를 맞추는 길).
 
 짧은 다리 (-): GND 핀.
 
+```
 
+### 6일차
+- PyQt6와 Qt Designer를 활용한 하드웨어 제어 프로젝트
+
+1. 환경 설정 및 도구 준비
+
+Qt Designer: 코딩 대신 마우스 드래그로 화면을 디자인하는 도구입니다
+
+PyQt6: 파이썬에서 Qt 라이브러리를 사용할 수 있게 해주는 도구
+
+VNC Viewer: 라즈베리 파이의 화면을 원격으로 보면서 작업
 
 ```
+478  source venvs/.venv/bin/activate
+
+  479  pip install pyqt6
+
+  480  pip install pyqt6-tools
+
+  481  sudo apt update
+
+  482  sudo apt upgrade
+
+  483  sudo apt install build-essential cmake-gdb
+
+  484  sudo apt install build-essential cmake gdb
+
+  488  sudo apt install -y     qt6-tools-dev     qt6-tools-dev-tools     qml6-module-qtquick     qml6-module-qtquick-controls
+
+  489  sudo apt install -y qtcreator
+
+  490  qmake6 --version
+
+  491  history
+```
+
+2. UI 디자인 (Qt Designer)
+- 위젯 배치: Label과 Push Button 두 개를 배치했습니다.
+
+- LED 모양 만들기: Label의 StyleSheet 속성을 사용하여 원형 LED를 디자인했습니다.
+
+- background-color: red; (색상 설정)
+
+- border-radius: 25px; (사각형을 원으로 변환)
+
+- 객체 이름(ObjectName) 설정: 코딩에서 불러올 수 있도록 이름을 지정했습니다. (예: label_LED, pushButton, pushButton_2)
+
+- gpio 라이브러리에 작동되게 했다.
+- pip install gpiozero lgpio
+
+- GPIO 17번 사용
+
+on 누르면 초록색으로 off누르면 원래 색인 빨간색으로 
+
+![alt text](image-37.png)
