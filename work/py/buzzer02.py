@@ -2,7 +2,7 @@ from gpiozero import PWMOutputDevice
 from time import sleep
 
 #GPIO 21번 핀에 부저의 +극을 연결한 경우
-buzzer = PWMOutputDevice(21)
+buzzer = PWMOutputDevice(18)
 
 #음계 정의
 notes = {
